@@ -22,5 +22,5 @@ for i, each in enumerate(originallist['fname']):
                 rows.append(k)
 
 originallist.drop(labels=rows, axis=0, inplace=True)
-originallist.to_csv('处理后样本总体.csv', index=False, encoding='utf_8_sig')
-# to_csv之前仍然能够处理正常格式，但to_csv方法经常中文乱码，给定utf_8_sig编码一般可解决
+originallist['incdate'] = [originallist['incdate'].iloc[i].date() for i in range(len(originallist['incdate']))]
+originallist.to_excel('基金名单.xlsx', index=False)
